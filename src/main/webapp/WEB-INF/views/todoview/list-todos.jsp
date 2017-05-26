@@ -1,15 +1,15 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- 
+	Using JSP Fragments to separate the items that are needed for every page such as header/footer/navigation etc.
+	This way the code will be organized in separate fragements and we use the include tag to add the needed
+	Fragments as needed in different pages.
+ -->
+<!-- HEADER FRAGMENT --> 
+<%@include file="../common/header.jspf" %>
+<!-- Navigation Bar FRAGMENT --> 
+<%@include file="../common/navigation.jspf" %>
 
-<html>
-<head>
-<title>Todos Page!!</title>
-<!-- LOAD CSS FILES HERE -->
-<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
 
-<h2>Hello ${nameParam}</h2>
-
+<!-- MAIN CONTENT OF THE PAGE GOES HERE --> 
 <div class="container">
 <table class="table table-striped">
 	<caption>Your Todos Are</caption>
@@ -24,8 +24,8 @@
 		<tbody>
 			<c:forEach items="${todos}" var="todo">
 				<tr>
-					<td>${todo.desc}</td>
-					<td>${todo.targetDate}</td>
+					<td>${todo.desc}</td>					
+					<td><fmt:formatDate pattern="dd/MM/yyyy" value="${todo.targetDate}"></fmt:formatDate></td>
 					<td>${todo.done}</td>
 					<td>
 						<a class="btn btn-danger" href="/delete-todo?id=${todo.id}">Delete!</a>
@@ -41,9 +41,5 @@
 
 </div>
 
-<!-- LOAD JS FILES HERE -->		
-<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	    
-</body>
-</html>
+<!-- FOOTER FRAGMENT --> 
+<%@include file="../common/footer.jspf" %>

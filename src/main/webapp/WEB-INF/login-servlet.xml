@@ -22,7 +22,7 @@
     </bean> 
     
     <mvc:resources mapping="/webjars/**" location="/webjars/"/>
-    
+    <mvc:resources mapping="/customResources/**" location="/WEB-INF/views/customResources/login/" />
     <mvc:annotation-driven />
 <!-- 
 	<mvc:resources mapping="/webjars/**" location="/webjars/"/>

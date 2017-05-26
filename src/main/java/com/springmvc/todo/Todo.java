@@ -20,7 +20,6 @@ public class Todo {
 	public Todo(){
 		
 	}
-	
 	public Todo(int id, String user, String desc, Date targetDate, boolean isDone) {
 		super();
 		this.id = id;

@@ -1,17 +1,15 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
-<html>
-<head>
-<title>Todos Page!!</title>
-<!-- LOAD CSS FILES HERE -->
-<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-<body>
-
-<p>Hello ${nameParam}</p>
+<!-- 
+	Using JSP Fragments to separate the items that are needed for every page such as header/footer/navigation etc.
+	This way the code will be organized in separate fragements and we use the include tag to add the needed
+	Fragments as needed in different pages.
+ -->
+<!-- HEADER FRAGMENT --> 
+<%@include file="../common/header.jspf" %>
+<!-- Navigation Bar FRAGMENT --> 
+<%@include file="../common/navigation.jspf" %>
 
 
+<!-- MAIN CONTENT OF THE PAGE GOES HERE --> 
 <div class="container">
 <h2>Add a Todo</h2>
 <!-- 
@@ -25,15 +23,17 @@
 		<form:input path="desc" type="text" class="form-control" required="required"/>
 		<form:errors path="desc" cssClass="text-warning"></form:errors>
 	</fieldset>
+	<fieldset class="form-group">
+		<form:label path="targetDate">Target Date</form:label>
+		<form:input path="targetDate" type="text" class="form-control" required="required"/>
+		<form:errors path="targetDate" cssClass="text-warning"></form:errors>
+	</fieldset>
 	<input class="btn btn-success" type="submit" value="Submit">
 	
 	
 </form:form>
 </div>
 
-<!-- LOAD JS FILES HERE -->		
-<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	    
-</body>
-</html>
+
+<!-- FOOTER FRAGMENT --> 
+<%@include file="../common/footer.jspf" %>
